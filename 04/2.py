@@ -1,5 +1,5 @@
 import string
-f = open("tin", "r").read()
+f = open("input", "r").read()
 
 passes = f.split("\n\n")  # Split blanks
 
@@ -31,9 +31,10 @@ def validateProps(props: dict) -> bool:
                 v = int(pv[:-2])
                 if not (150 <= v <= 193):
                     return False
+            else:
+                return False
         elif prop == "hcl":
             if not pv.startswith("#") or not len(pv) == 7 or not all(c in string.hexdigits for c in pv[1:]):
-                print("hcl:", pv)
                 return False
         elif prop == "ecl":
             if pv not in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]:
@@ -42,7 +43,6 @@ def validateProps(props: dict) -> bool:
             if not len(pv) == 9 or not pv.isdigit():
                 return False
     return True
-
 
 for pazz in passes:
     rows = pazz.split("\n")  # Split rows in passes
@@ -56,10 +56,6 @@ for pazz in passes:
             p[pr] = attr
 
     props = p.keys()
-    if all(rp in props for rp in reqProps) and validateProps(p):
-        correct += 1
-    # else:
-    #     print(p)
+    correct += 1 if all(rp in props for rp in reqProps) and validateProps(p) else 0
 
-correct -= 1
 print(correct)
