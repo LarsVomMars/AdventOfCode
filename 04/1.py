@@ -7,7 +7,6 @@ ps = []
 reqProps = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
 
 correct = 0
-            
 
 for pazz in passes:
     rows = pazz.split("\n")  # Split rows in passes
@@ -26,4 +25,4 @@ for pazz in passes:
 
 print(correct)
 
-    
+

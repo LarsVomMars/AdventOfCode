@@ -1,5 +1,5 @@
 import string
-f = open("input", "r").read()
+f = open("tin", "r").read()
 
 passes = f.split("\n\n")  # Split blanks
 
@@ -32,7 +32,8 @@ def validateProps(props: dict) -> bool:
                 if not (150 <= v <= 193):
                     return False
         elif prop == "hcl":
-            if not pv.startswith("#") or not all(c in string.hexdigits for c in pv[1:]):
+            if not pv.startswith("#") or not len(pv) == 7 or not all(c in string.hexdigits for c in pv[1:]):
+                print("hcl:", pv)
                 return False
         elif prop == "ecl":
             if pv not in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]:
@@ -60,4 +61,5 @@ for pazz in passes:
     # else:
     #     print(p)
 
+correct -= 1
 print(correct)
