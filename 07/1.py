@@ -15,20 +15,19 @@ for row in rows:
 
 
 def has_gold(idx: str, specs: dict) -> bool:
-    if specs[idx] == None:
+    if specs[idx] is None or specs[idx] == "":
         return False
     elif "shinygold" in specs[idx]:
         return True
     else:
         for i in specs[idx].split(","):
             if not has_gold(i[1:], specs):
-                specs[idx] = re.sub(i+"bags?,?", "", specs[idx]) # Mark bad visits
+                specs[idx] = specs[idx].replace(f"{i},", "").replace(i, "")
             else:
                 return True
         return False
 
 hg = 0
-print(specs["shinylavender"])
 for spec in specs:
     hg += 1 if has_gold(spec, specs) else 0
 
