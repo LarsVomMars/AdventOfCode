@@ -1,14 +1,16 @@
-rows = open("input", "r").readlines()
-rows = [row.strip().split() for row in rows]
+from copy import deepcopy
+
+rrows = open("input", "r").readlines()
+rrows = [row.strip().split() for row in rrows]
 
 def test(instructions: list):
     visited = []
     A = 0
     i = 0
     while True:
-        if i in visited:
+        if i in visited or i > len(instructions):
             return [False, A]
-        if i >= len(instructions):
+        if i == len(instructions):
             return [True, A]
 
         visited.append(i)
@@ -23,6 +25,7 @@ def test(instructions: list):
 
 i = 0
 while True:
+    rows = deepcopy(rrows) # Slower than recurrent file reads
     if rows[i][0] == "jmp":
         rows[i][0] = "nop"
     elif rows[i][0] == "nop":
@@ -34,10 +37,4 @@ while True:
             print(res)
             break
 
-    f = open("input", "r")
-    rows = open("input", "r").readlines()
-    rows = [row.strip().split() for row in rows]
     i += 1
-
-
-        

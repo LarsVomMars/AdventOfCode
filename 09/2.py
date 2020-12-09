@@ -13,6 +13,6 @@ for i in range(len(rows)):
         j += 1
 
     if s == N:
-        r = sorted(rows[i:j+1])
-        print(r[0]+r[-1])
+        r = rows[i:j+1]
+        print(min(r)+max(r))
         break
