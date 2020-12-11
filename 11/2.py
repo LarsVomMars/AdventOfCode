@@ -1,12 +1,10 @@
 rows = open("input", "r").readlines()
 rows = [row.strip() for row in rows]
 
-prev = []
-
-sour = [
-    [-1, -1], # u l
-    [-1, 0], # u s
-    [-1, 1], # u r
+ADJ = [
+    [-1, -1],
+    [-1, 0],
+    [-1, 1],
     [0, -1],
     [0, 1],
     [1, -1],
@@ -14,8 +12,8 @@ sour = [
     [1, 1],
 ]
 
+prev = []
 ctr = 0
-
 while prev != rows:
     prev = rows.copy()
     urows = rows.copy()
@@ -25,16 +23,16 @@ while prev != rows:
             if rows[i][j] == ".":
                 continue
             oc = 0
-            for pos in sour:
+            for pos in ADJ:
                 b = False
                 f = 1
                 while True:
-                    if i+f*pos[0] < 0 or i+f*pos[0] >= len(rows) or j+f*pos[1] < 0 or j+f*pos[1] >= len(row):
+                    if i + f * pos[0] < 0 or i + f * pos[0] >= len(rows) or j + f * pos[1] < 0 or j + f * pos[1] >= len(row):
                         break
-                    if rows[i+f*pos[0]][j+f*pos[1]] == "#":
+                    if rows[i + f * pos[0]][j + f * pos[1]] == "#":
                         b = True
                         break
-                    elif rows[i+f*pos[0]][j+f*pos[1]] == "L":
+                    elif rows[i + f * pos[0]][j + f * pos[1]] == "L":
                         break
                     f += 1
                 oc += 1 if b else 0
