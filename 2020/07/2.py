@@ -22,4 +22,5 @@ def ctr(idx: str, specs: dict) -> int:
         s += n + n * ctr(spec, specs)
     return s
 
+
 print(ctr("shinygold", specs))

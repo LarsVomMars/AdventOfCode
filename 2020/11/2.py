@@ -27,7 +27,8 @@ while prev != rows:
                 b = False
                 f = 1
                 while True:
-                    if i + f * pos[0] < 0 or i + f * pos[0] >= len(rows) or j + f * pos[1] < 0 or j + f * pos[1] >= len(row):
+                    if i + f * pos[0] < 0 or i + f * pos[0] >= len(rows) or j + f * pos[1] < 0 or j + f * pos[1] >= len(
+                            row):
                         break
                     if rows[i + f * pos[0]][j + f * pos[1]] == "#":
                         b = True

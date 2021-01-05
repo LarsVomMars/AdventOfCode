@@ -10,8 +10,8 @@ for _ in range(100):
     while c not in nums:
         c = c - 1 if c - 1 >= mn else mx
     ni = nums.index(c)
-    nums[ni+1:ni+1] = mv
+    nums[ni + 1:ni + 1] = mv
     nums.append(n)
 
 oi = nums.index(1)
-print("".join(map(str, (nums[oi+1:] + nums[:oi]))))
+print("".join(map(str, (nums[oi + 1:] + nums[:oi]))))

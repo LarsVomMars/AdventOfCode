@@ -17,7 +17,6 @@ def get_neighbours(pos: tuple) -> set:
 
 
 def check(act: set, pos: tuple) -> bool:
-    ctr = 0
     nbs = get_neighbours(pos)
     ctr = sum([1 if act_pos in nbs else 0 for act_pos in act])
     return ctr == 3 or (pos in act and ctr == 2)

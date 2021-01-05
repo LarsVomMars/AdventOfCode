@@ -33,7 +33,7 @@ for row in rows:
     if row.startswith("mask = "):
         mask = row[-36:]
         continue
-    i = row[row.index("[")+1:row.index("]")]
+    i = row[row.index("[") + 1:row.index("]")]
 
     mis = apply_addr_mask(format(int(i), "036b"), mask)
 

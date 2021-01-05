@@ -24,5 +24,3 @@ for pazz in passes:
         correct += 1
 
 print(correct)
-
-

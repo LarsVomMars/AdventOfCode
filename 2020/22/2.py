@@ -28,4 +28,3 @@ for idx, val in enumerate(ps[1][::-1]):
     res += val * (idx + 1)
 
 print(res)
-

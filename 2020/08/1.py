@@ -3,7 +3,6 @@ rows = open("input", "r").readlines()
 rows = [row.strip().split() for row in rows]
 visited = []
 
-
 A = 0
 i = 0
 while True:

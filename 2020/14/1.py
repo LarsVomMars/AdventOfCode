@@ -8,7 +8,7 @@ for row in rows:
     if row.startswith("mask = "):
         mask = row[-36:]
         continue
-    i = row[row.index("[")+1:row.index("]")]
+    i = row[row.index("[") + 1:row.index("]")]
     num = format(int(row.split("=")[1]), "036b")
     new = ""
     for j in range(len(mask)):

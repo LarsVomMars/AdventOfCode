@@ -3,6 +3,7 @@ from copy import deepcopy
 rrows = open("input", "r").readlines()
 rrows = [row.strip().split() for row in rrows]
 
+
 def test(instructions: list):
     visited = []
     A = 0
@@ -23,9 +24,10 @@ def test(instructions: list):
             A += int(row[1])
             i += 1
 
+
 i = 0
 while True:
-    rows = deepcopy(rrows) # Slower than recurrent file reads
+    rows = deepcopy(rrows)  # Slower than recurrent file reads
     if rows[i][0] == "jmp":
         rows[i][0] = "nop"
     elif rows[i][0] == "nop":

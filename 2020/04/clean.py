@@ -1,14 +1,4 @@
-import string
-
-f = open("input", "r").read()
-
-passes = f.split("\n\n")  # Split blanks
-
-ps = []
-
-reqProps = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
-
-correct = 0
+from string import hexdigits
 
 
 def validateProps(props: dict) -> bool:
@@ -35,7 +25,7 @@ def validateProps(props: dict) -> bool:
             else:
                 return False
         elif prop == "hcl":
-            if not pv.startswith("#") or not len(pv) == 7 or not all(c in string.hexdigits for c in pv[1:]):
+            if not pv.startswith("#") or not len(pv) == 7 or not all(c in hexdigits for c in pv[1:]):
                 return False
         elif prop == "ecl":
             if pv not in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]:
@@ -46,6 +36,12 @@ def validateProps(props: dict) -> bool:
     return True
 
 
+passes = open("input", "r").read().split("\n\n")
+
+reqProps = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
+
+p1 = 0
+p2 = 0
 for pazz in passes:
     rows = pazz.split("\n")  # Split rows in passes
     p = {}
@@ -58,6 +54,10 @@ for pazz in passes:
             p[pr] = attr
 
     props = p.keys()
-    correct += 1 if all(rp in props for rp in reqProps) and validateProps(p) else 0
+    if all(rp in props for rp in reqProps):
+        p1 += 1
+        if validateProps(p):
+            p2 += 1
 
-print(correct)
+print("1:", p1)
+print("2:", p2)

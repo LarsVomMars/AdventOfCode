@@ -15,10 +15,10 @@ for row in rows:
         wp[1] += p
     elif mv == "W":
         wp[1] -= p
-    elif mv == "F": # Move ship by waypoint magnitude
+    elif mv == "F":  # Move ship by waypoint magnitude
         pos[0] += wp[0] * p
         pos[1] += wp[1] * p
-    elif mv == "L": # Rotating the waypoint works the same
+    elif mv == "L":  # Rotating the waypoint works the same
         l = p // 90
         for i in range(l):
             wp[0], wp[1] = wp[1], -wp[0]

@@ -14,6 +14,3 @@ for dt in times:
         sid = dt
 
 print(smallest * sid)
-
-
-

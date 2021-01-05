@@ -1,9 +1,8 @@
-rows = open("input", "r").readlines()
+rows = [row.strip() for row in open("input", "r").readlines()]
 
 specs = {}
 
 for row in rows:
-    row = row.strip()
     sbag = "".join(row.split()[:2])
     if row.endswith("no other bags."):
         specs[sbag] = None
@@ -26,8 +25,16 @@ def has_gold(idx: str, specs: dict) -> bool:
         return False
 
 
-hg = 0
-for spec in specs:
-    hg += 1 if has_gold(spec, specs) else 0
+def ctr(idx: str) -> int:
+    if specs[idx] is None:
+        return 0
+    s = 0
+    for spec in specs[idx].split(","):
+        n = int(spec[0])
+        spec = spec[1:]
+        s += n + n * ctr(spec)
+    return s
 
-print(hg)
+
+print("1:", sum([has_gold(spec, specs.copy()) for spec in specs]))
+print("2:", ctr("shinygold"))

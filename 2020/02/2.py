@@ -8,8 +8,8 @@ for row in rows:
     n1, n2 = nums.split("-")
     n1 = int(n1)
     n2 = int(n2)
-    
-    if (pwd[n1-1] == char and pwd[n2-1] != char) or (pwd[n1-1] != char and pwd[n2-1] == char):
+
+    if (pwd[n1 - 1] == char and pwd[n2 - 1] != char) or (pwd[n1 - 1] != char and pwd[n2 - 1] == char):
         print(row)
         correct += 1
 

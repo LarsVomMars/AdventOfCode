@@ -1,8 +1,7 @@
-nums = [1,17,0,10,18,11,6]
+nums = [1, 17, 0, 10, 18, 11, 6]
 
 ctr = len(nums)
 BREAK_I = 2020
-# BREAK_I = 3_000_000
 
 while True:
     ln = nums[-1]

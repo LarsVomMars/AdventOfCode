@@ -1,4 +1,5 @@
 import operator
+
 rows = [row.strip() for row in open("input", "r").readlines()]
 
 OPS = {
@@ -22,7 +23,7 @@ def calc(toks):
         tk = toks.pop(0)
         if tk in "(":
             idx = get_para_idx(toks)
-            res = OPS[op](res, calc(toks[:idx+1]))
+            res = OPS[op](res, calc(toks[:idx + 1]))
             toks = toks[idx:]
         elif tk.isdigit():
             res = OPS[op](res, int(tk))

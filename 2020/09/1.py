@@ -3,7 +3,7 @@ rows = list(map(int, rows))
 
 for i in range(25, len(rows)):
     row = rows[i]
-    preamble = rows[i-25:i+1]
+    preamble = rows[i - 25:i + 1]
 
     b = False
     for p in preamble:
@@ -13,7 +13,7 @@ for i in range(25, len(rows)):
                 break
         if b:
             break
-    
+
     if not b:
         print(row)
         break
