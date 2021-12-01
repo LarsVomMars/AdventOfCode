@@ -6,7 +6,7 @@ def p1():
 
 
 def p2():
-    return sum([1 for i in range(0, len(LINES) - 1) if sum(LINES[i:i+3]) < sum(LINES[i+1:i+1+3])])
+    return sum([1 for i in range(0, len(LINES) - 2) if sum(LINES[i:i+3]) < sum(LINES[i+1:i+1+3])])
 
 
 print("1:", p1())
