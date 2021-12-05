@@ -7,7 +7,7 @@ BOARD_WIDTH = 5
 class Board:
     def __init__(self, board: str) -> None:
         self.board = self.__get_board(board)
-        self.marked = [False, ] * 25
+        self.marked = [False, ] * (BOARD_WIDTH * BOARD_HEIGHT)
 
     def __get_board(self, board: str) -> list:
         return [int(val) for row in board.splitlines() for val in row.split()]

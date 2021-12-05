@@ -1,7 +1,7 @@
 YEAR=$(date +%Y)
 DAY=$(date +%d)
 DIR_PATH=./$YEAR/$DAY/
-if [! -d "$DIR_PATH"]; then
+if [ ! -d "$DIR_PATH" ]; then
 mkdir -p $DIR_PATH
 cd $DIR_PATH
 aocd $YEAR $DAY > input
@@ -19,5 +19,4 @@ def p2():
 print(\"1:\", p1())
 print(\"2:\", p2())
 " > main.py
-code .
 fi
