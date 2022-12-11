@@ -1,4 +1,4 @@
-from functools import reduce, partial
+from functools import reduce
 from dataclasses import dataclass
 from typing import Callable
 from copy import deepcopy
@@ -43,15 +43,20 @@ for monkey in data:
     fm = int(monkey[5].split()[-1])
 
     # Fuck python late-binding
+    # Use partials or default parameters
+    # Default parameters are evaluated at function definition time
     opnum = monkey[2].split()[-1]
-    op = None
     if opnum.isnumeric():
         opnum = int(opnum)
-        op = partial(monkey_op, op=rop, opnum=opnum)
-    else:
-        op = partial(monkey_op_self, op=rop)
 
-    throw = partial(monkey_throw, mod=mod, tm=tm, fm=fm)
+        def op(x, op=rop, opnum=opnum):
+            return op(x, opnum)
+    else:
+        def op(x, op=rop):
+            return op(x, x)
+
+    def throw(x, mod=mod, tm=tm, fm=fm):
+        return tm if x % mod == 0 else fm
 
     MONKEYS.append(Monkey(items, op, throw, mod))
 
