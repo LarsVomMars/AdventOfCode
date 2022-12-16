@@ -1,5 +1,5 @@
 from json import loads
-
+from functools import cmp_to_key
 
 LINES = [[loads(l.strip()) for l in line.splitlines()]
          for line in open("input").read().split("\n\n")]
