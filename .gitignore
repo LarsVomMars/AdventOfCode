@@ -2,3 +2,4 @@
 .idea/
 venv/
 /**/input
+/**/.ruff_cache/
