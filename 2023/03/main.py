@@ -46,10 +46,10 @@ def all():
                 symbols.keys(),
             )
         )
-        
+
         if len(adjacent) == 0:
             continue
-        
+
         val = int(value)
         for f in filter(lambda k: symbols[k] == "*", adjacent):
             gears[f].append(val)

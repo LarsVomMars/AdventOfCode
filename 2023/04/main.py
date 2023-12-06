@@ -21,10 +21,8 @@ def p2():
     cards = [1] * len(GAMES)
 
     for game, matches in GAMES:
-        cnt = len(matches)
-        for i in range(game, game + cnt):
+        for i in range(game, game + len(matches)):
             cards[i] += cards[game - 1]
-
     return sum(cards)
 
 
