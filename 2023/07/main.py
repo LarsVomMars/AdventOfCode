@@ -1,5 +1,4 @@
 from collections import Counter
-from enum import IntEnum
 from functools import cmp_to_key
 
 LINES = [
@@ -9,43 +8,25 @@ LINES = [
 ]
 
 
-class CardType(IntEnum):
-    HIGH_CARD = 0
-    PAIR = 1
-    TWO_PAIR = 2
-    THREE_OF_A_KIND = 3
-    FULL_HOUSE = 4
-    FOUR_OF_A_KIND = 5
-    FIVE_OF_A_KIND = 6
-
-
-def get_type(deck, part2=False):
+def get_type(deck, part2):
     jokers = 0
     if part2:
         jokers = deck.count("J")
         deck = deck.replace("J", "")
 
     cards = sorted(Counter(deck).values())
+    l = len(cards)
 
-    if len(cards) <= 1:
-        return CardType.FIVE_OF_A_KIND
-
+    if l <= 1:
+        return 6
     most = cards[-1] + jokers
 
-    if len(cards) == 5:
-        return CardType.HIGH_CARD
-    if len(cards) == 4:
-        return CardType.PAIR
-
-    if len(cards) == 2 and most == 4:
-        return CardType.FOUR_OF_A_KIND
-    if len(cards) == 2 and most == 3:
-        return CardType.FULL_HOUSE
-
-    if len(cards) == 3 and most == 3:
-        return CardType.THREE_OF_A_KIND
-    if len(cards) == 3 and most == 2:
-        return CardType.TWO_PAIR
+    if l >= 4:
+        return 5 - l
+    if l == 2:
+        return most + 1
+    if l == 3:
+        return most
 
 
 def get_value(card, part2):
@@ -78,8 +59,14 @@ def make_cmp(part2):
 
 
 def solve(part2):
-    values = sorted(LINES, key=cmp_to_key(make_cmp(part2)))
-    return sum([bid * i for i, (_, bid) in enumerate(values, 1)])
+    return sum(
+        [
+            bid * i
+            for i, (_, bid) in enumerate(
+                sorted(LINES, key=cmp_to_key(make_cmp(part2))), 1
+            )
+        ]
+    )
 
 
 def p1():
