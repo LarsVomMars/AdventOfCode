@@ -1,5 +1,7 @@
 /**/__pycache__/
 .idea/
+.vscode/
 venv/
 /**/input
+/**/tin
 /**/.ruff_cache/
