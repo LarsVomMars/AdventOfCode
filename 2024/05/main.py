@@ -9,6 +9,7 @@ for line in parts[0].splitlines():
 
 UPDATES = [list(map(int, line.strip().split(","))) for line in parts[1].splitlines()]
 
+
 def all():
     s1 = 0
     s2 = 0
@@ -20,7 +21,10 @@ def all():
                 for r in rule:
                     if r in update[:i]:
                         incorrect = True
-                        update[i], update[update.index(r)] = update[update.index(r)], update[i]
+                        update[i], update[update.index(r)] = (
+                            update[update.index(r)],
+                            update[i],
+                        )
                         break
                 else:
                     continue
@@ -32,6 +36,7 @@ def all():
                     s1 += update[len(update) // 2]
                 break
     return s1, s2
+
 
 p1, p2 = all()
 

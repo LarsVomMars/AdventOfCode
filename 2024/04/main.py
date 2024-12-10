@@ -37,10 +37,22 @@ def diag(x, y):
     br = LINES[y + 1][x + 1]
 
     return (
-        tl == "M" and br == "S" and tr == "M" and bl == "S"
-        or tl == "M" and br == "S" and tr == "S" and bl == "M"
-        or tl == "S" and br == "M" and tr == "M" and bl == "S"
-        or tl == "S" and br == "M" and tr == "S" and bl == "M"
+        tl == "M"
+        and br == "S"
+        and tr == "M"
+        and bl == "S"
+        or tl == "M"
+        and br == "S"
+        and tr == "S"
+        and bl == "M"
+        or tl == "S"
+        and br == "M"
+        and tr == "M"
+        and bl == "S"
+        or tl == "S"
+        and br == "M"
+        and tr == "S"
+        and bl == "M"
     )
 
 

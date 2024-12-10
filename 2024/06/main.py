@@ -57,7 +57,6 @@ def p2():
                     cnt += 1
                     break
 
-
     return cnt
 
 

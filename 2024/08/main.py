@@ -40,7 +40,7 @@ def p2():
                 else:
                     break
                 a = nn
-            
+
             while True:
                 pn = (b[0] - diff[0], b[1] - diff[1])
                 if 0 <= pn[0] < MAX_Y and 0 <= pn[1] < MAX_X:
@@ -50,7 +50,7 @@ def p2():
                 b = pn
         if len(coords) > 2:
             antinodes |= set(coords)
-    
+
     return len(antinodes)
 
 
